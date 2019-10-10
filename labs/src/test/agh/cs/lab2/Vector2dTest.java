@@ -10,6 +10,7 @@ public class Vector2dTest {
     Vector2d v3 = new Vector2d(0, -1);
     Vector2d v4 = new Vector2d(6, 2);
     MapDirection dir = MapDirection.EAST;
+
     @Test
     public void equalsTest(){
         assertTrue(v2.equals(v3));
