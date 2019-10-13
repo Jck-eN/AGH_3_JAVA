@@ -1,16 +1,17 @@
 package agh.cs.lab2;
 
 public enum MapDirection {
-    NORTH("Północ"), EAST("Wschód"),SOUTH("Południe"), WEST("Zachód"), ;
+    NORTH, EAST,SOUTH, WEST ;
 
-    private String name;
-
-    MapDirection(String name) {
-        this.name = name;
-    }
 
     public String toString() {
-        return this.name;
+        switch(this){
+            case EAST: return "Wschód";
+            case SOUTH: return "Południe";
+            case WEST: return "Zachód";
+            case NORTH: return "Północ";
+            default: return "";
+        }
     }
 
     public MapDirection next(){
