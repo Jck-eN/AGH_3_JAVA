@@ -11,15 +11,7 @@ public class Vector2d {
         return "(" + this.x + "," + this.y + ")";
     }
 
-    private int max(int x, int y) {
-        if (x > y) return x;
-        else return y;
-    }
 
-    private int min(int x, int y) {
-        if (x < y) return x;
-        else return y;
-    }
 
     public boolean precedes(Vector2d other){
         return (other.x >= this.x && other.y >= this.y);
@@ -30,11 +22,11 @@ public class Vector2d {
     }
 
     public Vector2d upperRight(Vector2d other) {
-        return new Vector2d(max(this.x, other.x), max(this.y, other.y));
+        return new Vector2d(Math.max(this.x, other.x), Math.max(this.y, other.y));
     }
 
     public Vector2d lowerLeft(Vector2d other) {
-        return new Vector2d(min(this.x, other.x), min(this.y, other.y));
+        return new Vector2d(Math.min(this.x, other.x), Math.min(this.y, other.y));
     }
 
     public Vector2d add(Vector2d other) {

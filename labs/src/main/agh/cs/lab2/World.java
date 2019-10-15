@@ -9,6 +9,7 @@ public class World {
         System.out.println(position1.add(position2));
 
 
+        System.out.println("----------------");
         MapDirection dir1 = MapDirection.EAST;
         System.out.println(dir1.toString());
         dir1 = dir1.next();
