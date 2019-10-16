@@ -1,18 +1,24 @@
 package agh.cs.lab2;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class Vector2dTest {
-    Vector2d v1 = new Vector2d(3, 4);
-    Vector2d v2 = new Vector2d(0, -1);
-    Vector2d v3 = new Vector2d(0, -1);
-    Vector2d v4 = new Vector2d(6, 2);
-    MapDirection dir = MapDirection.EAST;
+    Vector2d v1, v2, v3, v4;
+
+    @Before
+    public void createVector(){
+        v1 = new Vector2d(3, 4);
+        v2 = new Vector2d(0, -1);
+        v3 = new Vector2d(0, -1);
+        v4 = new Vector2d(6, 2);
+    }
 
     @Test
     public void equalsTest(){
+        MapDirection dir = MapDirection.EAST;
         assertTrue(v2.equals(v3));
         assertFalse(v1.equals(v2));
         assertFalse(v1.equals(dir));
