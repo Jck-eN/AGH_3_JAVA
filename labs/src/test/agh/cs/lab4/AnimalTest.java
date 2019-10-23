@@ -1,29 +1,31 @@
-package agh.cs.lab3;
+package agh.cs.lab4;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static agh.cs.lab3.MoveDirection.*;
+import static agh.cs.lab4.MoveDirection.*;
 import static org.junit.Assert.*;
 
 public class AnimalTest {
 
-    Animal a, b, c, d;
+    private IWorldMap map;
+    private Animal a, b, c, d;
 
     @Before
     public void setUp() {
-        a = new Animal();   // (2,2) north
-        b = new Animal();
+        this.map = new RectangularMap(5, 6);
+        a = new Animal(map);   // (2,2) north
+        b = new Animal(map);
         b.move(FORWARD);
         b.move(LEFT);
         b.move(FORWARD);    // (1,3) west
-        c = new Animal();
+        c = new Animal(map);
         c.move(BACKWARD);
         c.move(BACKWARD);
         c.move(BACKWARD);
         c.move(RIGHT);      // (2,0) east
-        d = new Animal();
+        d = new Animal(map);
         d.move(LEFT);
         d.move(FORWARD);
         d.move(FORWARD);
@@ -34,8 +36,8 @@ public class AnimalTest {
         d.move(FORWARD);    // (0,0) south
     }
     @Test
-    public void testToString(){
-        assertEquals(a.toString(), "pozycja: (2,2) | kierunek: Północ");
+    public void testToStringLong(){
+        assertEquals(a.toStringLong(), "pozycja: (2,2) | kierunek: Północ");
     }
 
     @Test

@@ -1,4 +1,4 @@
-package agh.cs.lab3;
+package agh.cs.lab4;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,6 @@ public class OptionsParser {
                 afterParse.add(singleDirection);
             }
         }
-        return afterParse.toArray(new MoveDirection[0]);
+        return afterParse.toArray(new MoveDirection[afterParse.size()]);
     }
 }
