@@ -1,5 +1,11 @@
-package agh.cs.lab4;
+package agh.cs.lab5;
 
+import agh.cs.lab5.Animal;
+import agh.cs.lab5.IWorldMap;
+import agh.cs.lab5.MapDirection;
+import agh.cs.lab5.OptionsParser;
+import agh.cs.lab5.RectangularMap;
+import agh.cs.lab5.Vector2d;
 import org.junit.Before;
 import org.junit.Test;
 

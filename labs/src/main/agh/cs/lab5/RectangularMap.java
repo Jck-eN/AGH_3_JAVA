@@ -1,13 +1,11 @@
-package agh.cs.lab4;
+package agh.cs.lab5;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RectangularMap implements IWorldMap {
-    private final Vector2d topRightCorner;
+public class RectangularMap extends AbstractWorldMap {
+    private Vector2d topRightCorner;
     private final Vector2d bottomLeftCorner = new Vector2d(0,0);
-
-    private List<Animal> animals = new ArrayList<>();
 
     public Vector2d getTopRightCorner(){
         return this.topRightCorner;
@@ -27,31 +25,6 @@ public class RectangularMap implements IWorldMap {
         && !this.isOccupied(position);
     }
 
-    public boolean place(Animal animal){
-        if(!this.canMoveTo(animal.getPosition())){
-            return false;
-        }
-        this.animals.add(animal);
-        return true;
-    }
-
-    public void run(MoveDirection[] directions){
-        int i=0;
-        int animalNumber = this.animals.size();
-        for(MoveDirection dir : directions){
-            this.animals.get(i).move(dir);
-            i=(i+1)%animalNumber;
-        }
-    }
-
-    public boolean isOccupied(Vector2d position){
-        for(Animal a : this.animals){
-            if(a.getPosition().equals(position)){
-                return true;
-            }
-        }
-        return false;
-    }
 
     public Object objectAt(Vector2d position){
         for(Animal a : this.animals){
