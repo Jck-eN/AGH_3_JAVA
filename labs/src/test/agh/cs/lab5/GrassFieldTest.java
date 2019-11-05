@@ -1,24 +1,22 @@
 package agh.cs.lab5;
 
-import agh.cs.lab5.Animal;
-import agh.cs.lab5.IWorldMap;
-import agh.cs.lab5.MapDirection;
-import agh.cs.lab5.OptionsParser;
-import agh.cs.lab5.RectangularMap;
-import agh.cs.lab5.Vector2d;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
-public class RectangularMapTest {
+public class GrassFieldTest {
 
-    RectangularMap map;
+    GrassField map;
     Animal a, b, c, d;
 
     @Before
     public void setUp(){
-        this.map=new RectangularMap(10,5);
+        this.map=new GrassField(10);
         this.a = new Animal(map);
         this.b = new Animal(map, new Vector2d(3,4));
         this.c = new Animal(map);
@@ -30,7 +28,7 @@ public class RectangularMapTest {
         assertTrue(map.place(a));
         assertTrue(map.place(b));
         assertFalse(map.place(c));
-        assertFalse(map.place(d));
+        assertTrue(map.place(d));
     }
 
     @Test
@@ -38,8 +36,9 @@ public class RectangularMapTest {
         map.place(a);
         map.place(b);
         assertFalse(map.canMoveTo(new Vector2d(2, 2)));
-        assertFalse(map.canMoveTo(new Vector2d(27, 2)));
-        assertFalse(map.canMoveTo(new Vector2d(2, -1)));
+        assertTrue(map.canMoveTo(new Vector2d(27, 2)));
+        assertTrue(map.canMoveTo(new Vector2d(2, -1)));
+        assertFalse(map.canMoveTo(new Vector2d(3, 4)));
     }
 
     @Test
@@ -48,7 +47,6 @@ public class RectangularMapTest {
         map.place(b);
         assertTrue(map.isOccupied(new Vector2d(2, 2)));
         assertTrue(map.isOccupied(new Vector2d(3, 4)));
-        assertFalse(map.isOccupied(new Vector2d(0, 0)));
     }
 
     @Test
@@ -68,14 +66,21 @@ public class RectangularMapTest {
         map.run(OptionsParser.parse("f b r l f f r r f f f f f f f f".split(" ")));
         assertEquals(MapDirection.SOUTH, a.getDirection());
         assertEquals(MapDirection.NORTH, b.getDirection());
-        assertEquals(new Vector2d(2, 0), a.getPosition());
-        assertEquals(new Vector2d(3, 4), b.getPosition());
+        assertEquals(new Vector2d(2, -1), a.getPosition());
+        assertEquals(new Vector2d(3, 7), b.getPosition());
 
         map.run(OptionsParser.parse("l l l l f f f f".split(" ")));
         assertEquals(MapDirection.NORTH, a.getDirection());
         assertEquals(MapDirection.SOUTH, b.getDirection());
-        assertEquals(new Vector2d(2, 2), a.getPosition());
-        assertEquals(new Vector2d(3, 2), b.getPosition());
+        assertEquals(new Vector2d(2, 1), a.getPosition());
+        assertEquals(new Vector2d(3, 5), b.getPosition());
+    }
+
+    @Test
+    public void testGrassSpawning() {
+        assertEquals(this.map.grasses.size(), 10);
+        GrassField map2 = new GrassField(5);
+        assertEquals(map2.grasses.size(), 5);
     }
 
 }

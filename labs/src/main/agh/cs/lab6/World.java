@@ -1,7 +1,4 @@
-package agh.cs.lab5;
-
-import java.util.ArrayList;
-import java.util.List;
+package agh.cs.lab6;
 
 public class World {
     public static void main(String[] args) {

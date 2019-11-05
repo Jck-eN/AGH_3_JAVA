@@ -1,7 +1,4 @@
-package agh.cs.lab5;
-
-import java.util.ArrayList;
-import java.util.List;
+package agh.cs.lab6;
 
 public class RectangularMap extends AbstractWorldMap {
     private Vector2d topRightCorner;
