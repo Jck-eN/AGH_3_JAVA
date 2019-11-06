@@ -1,6 +1,5 @@
 package agh.cs.lab5;
 
-import javax.swing.text.Position;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -45,7 +44,7 @@ public class GrassField extends AbstractWorldMap {
         return this.grassAt(position);
     }
 
-    private Vector2d calculateTopRightCorner(){
+    public Vector2d getTopRightCorner(){
         int max_x=Integer.MIN_VALUE;
         int max_y=Integer.MIN_VALUE;
         for(Animal a : this.animals){
@@ -58,7 +57,7 @@ public class GrassField extends AbstractWorldMap {
         }
         return new Vector2d(max_x, max_y);
     }
-    private Vector2d calculateBottomLeftCorner(){
+    public Vector2d getBottomLeftCorner(){
         int min_x=Integer.MAX_VALUE;
         int min_y=Integer.MAX_VALUE;
         for(Animal a : this.animals){
@@ -86,9 +85,7 @@ public class GrassField extends AbstractWorldMap {
         }
     }
 
-    public String toString(){
-        return new MapVisualizer(this).draw(this.calculateBottomLeftCorner(), this.calculateTopRightCorner());
-    }
+
 
     public boolean canMoveTo(Vector2d position){
                 return !(this.objectAt(position) instanceof Animal);

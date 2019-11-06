@@ -10,21 +10,20 @@ public class RectangularMap extends AbstractWorldMap {
     public Vector2d getTopRightCorner(){
         return this.topRightCorner;
     }
+    public Vector2d getBottomLeftCorner(){
+        return this.bottomLeftCorner;
+    }
 
     public RectangularMap(int width, int height){
         this.topRightCorner = new Vector2d(width-1, height-1);
     }
 
-    public String toString(){
-        return new MapVisualizer(this).draw(this.bottomLeftCorner, this.topRightCorner);
-    }
 
     public boolean canMoveTo(Vector2d position){
         return position.precedes(this.topRightCorner)
         && position.follows(this.bottomLeftCorner)
         && !this.isOccupied(position);
     }
-
 
 
 
