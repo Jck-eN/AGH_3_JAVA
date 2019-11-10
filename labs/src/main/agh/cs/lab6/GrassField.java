@@ -1,14 +1,11 @@
 package agh.cs.lab6;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GrassField extends AbstractWorldMap {
 
     protected List<Grass> grasses = new ArrayList<>();
-
-
+    protected Map<Vector2d, Grass> grassesMap = new HashMap<>();
 
     public GrassField(int n){
         for(int i=0; i < n; i++) {
@@ -25,16 +22,13 @@ public class GrassField extends AbstractWorldMap {
             position = new Vector2d(x, y);
         }
         while (this.isOccupied(position));
-        this.grasses.add(new Grass(position));
+        Grass g = new Grass(position);
+        this.grasses.add(g);
+        this.grassesMap.put(g.getPosition(), g);
     }
 
-    public Object grassAt(Vector2d position){
-        for(Grass g : this.grasses){
-            if(g.getPosition().equals(position)){
-                return g;
-            }
-        }
-        return null;
+    public Grass grassAt(Vector2d position){
+        return this.grassesMap.get(position);
     }
 
     public Object objectAt(Vector2d position){
@@ -44,7 +38,7 @@ public class GrassField extends AbstractWorldMap {
         return this.grassAt(position);
     }
 
-    private Vector2d calculateTopRightCorner(){
+    public Vector2d getTopRightCorner(){
         int max_x=Integer.MIN_VALUE;
         int max_y=Integer.MIN_VALUE;
         for(Animal a : this.animals){
@@ -57,7 +51,7 @@ public class GrassField extends AbstractWorldMap {
         }
         return new Vector2d(max_x, max_y);
     }
-    private Vector2d calculateBottomLeftCorner(){
+    public Vector2d getBottomLeftCorner(){
         int min_x=Integer.MAX_VALUE;
         int min_y=Integer.MAX_VALUE;
         for(Animal a : this.animals){
@@ -75,19 +69,22 @@ public class GrassField extends AbstractWorldMap {
         int i=0;
         int animalNumber = this.animals.size();
         for(MoveDirection dir : directions){
-            this.animals.get(i).move(dir);
+
+            Animal animalToMove = this.animals.get(i);
+            this.animalsMap.remove(animalToMove.getPosition());
+            animalToMove.move(dir);
+            this.animalsMap.put(animalToMove.getPosition(), animalToMove);
             i=(i+1)%animalNumber;
-            Object g = this.grassAt(this.animals.get(i).getPosition());
+
+            Grass g = this.grassAt(this.animals.get(i).getPosition());
             if(g != null) {
                 this.addGrass(this.grasses.size());
                 this.grasses.remove(g);
+                this.grassesMap.remove(g.getPosition());
             }
         }
     }
 
-    public String toString(){
-        return new MapVisualizer(this).draw(this.calculateBottomLeftCorner(), this.calculateTopRightCorner());
-    }
 
     public boolean canMoveTo(Vector2d position){
                 return !(this.objectAt(position) instanceof Animal);

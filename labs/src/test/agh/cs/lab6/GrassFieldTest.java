@@ -1,5 +1,6 @@
 package agh.cs.lab6;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class GrassFieldTest {
     public void placeTest(){
         assertTrue(map.place(a));
         assertTrue(map.place(b));
-        assertFalse(map.place(c));
+        assertThrows(IllegalArgumentException.class , () -> map.place(c));
         assertTrue(map.place(d));
     }
 

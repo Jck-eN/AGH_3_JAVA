@@ -10,7 +10,7 @@ public class Animal implements IMapElement {
     }
 
     public Animal(IWorldMap map, Vector2d initialPosition){
-        this.map = map;
+        this(map);
         this.position = initialPosition;
     }
 

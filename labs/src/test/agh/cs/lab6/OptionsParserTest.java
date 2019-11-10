@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static agh.cs.lab6.MoveDirection.*;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertThrows;
 
 public class OptionsParserTest {
     String[] s1, s2, s3, s4, s5;
@@ -32,6 +33,6 @@ public class OptionsParserTest {
         assertArrayEquals(OptionsParser.parse(s2), d2);
         assertArrayEquals(OptionsParser.parse(s3), d3);
         assertArrayEquals(OptionsParser.parse(s4), d4);
-        assertArrayEquals(OptionsParser.parse(s5), d5);
+        assertThrows(IllegalArgumentException.class, () -> OptionsParser.parse(s5));
     }
 }

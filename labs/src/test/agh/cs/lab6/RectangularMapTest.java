@@ -29,8 +29,8 @@ public class RectangularMapTest {
     public void placeTest(){
         assertTrue(map.place(a));
         assertTrue(map.place(b));
-        assertFalse(map.place(c));
-        assertFalse(map.place(d));
+        assertThrows(IllegalArgumentException.class , () -> map.place(c));
+        assertThrows(IllegalArgumentException.class , () -> map.place(d));
     }
 
     @Test
