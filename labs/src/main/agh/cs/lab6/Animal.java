@@ -28,7 +28,7 @@ public class Animal implements IMapElement {
             case EAST: return "E";
             case SOUTH: return "S";
             case WEST: return "W";
-            default: return null;
+            default: throw new IllegalArgumentException("Niepoprawny kierunek zwierzęcia");
         }
     }
     public String toStringLong() {
