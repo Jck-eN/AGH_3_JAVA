@@ -78,7 +78,7 @@ public class GrassFieldTest {
     }
 
     @Test
-    public void testGrassSpawning() {
+    public void grassSpawningTest() {
         assertEquals(this.map.grasses.size(), 10);
         GrassField map2 = new GrassField(5);
         assertEquals(map2.grasses.size(), 5);

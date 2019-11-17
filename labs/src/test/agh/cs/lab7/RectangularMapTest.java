@@ -1,11 +1,11 @@
-package agh.cs.lab6;
+package agh.cs.lab7;
 
-import agh.cs.lab6.Animal;
-import agh.cs.lab6.IWorldMap;
-import agh.cs.lab6.MapDirection;
-import agh.cs.lab6.OptionsParser;
-import agh.cs.lab6.RectangularMap;
-import agh.cs.lab6.Vector2d;
+import agh.cs.lab7.*;
+import agh.cs.lab7.Animal;
+import agh.cs.lab7.MapDirection;
+import agh.cs.lab7.OptionsParser;
+import agh.cs.lab7.RectangularMap;
+import agh.cs.lab7.Vector2d;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,7 +57,6 @@ public class RectangularMapTest {
         map.place(b);
         assertEquals(a, map.objectAt(new Vector2d(2, 2)));
         assertEquals(b, map.objectAt(new Vector2d(3, 4)));
-        assertEquals(null, map.objectAt(new Vector2d(1, 1)));
     }
 
 

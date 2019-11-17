@@ -1,4 +1,4 @@
-package agh.cs.lab6;
+package agh.cs.lab7;
 
 public enum MapDirection {
     NORTH, EAST,SOUTH, WEST ;
