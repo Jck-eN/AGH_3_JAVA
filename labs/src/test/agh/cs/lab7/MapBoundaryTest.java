@@ -37,7 +37,7 @@ public class MapBoundaryTest {
     @Test
     public void getTopRight() {
         assertEquals(this.map.mapBoundary.getTopRight(), new Vector2d(20,11));
-        assertEquals(this.map2.mapBoundary.getTopRight(), new Vector2d(2,7));
+        assertEquals(this.map2.mapBoundary.getTopRight(), new Vector2d(3,7));
     }
 
     @Test
