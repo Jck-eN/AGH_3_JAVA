@@ -3,18 +3,24 @@ package agh.cs.lab8;
 public class World {
     public static void main(String[] args) {
         try {
-            args = "f b r l f f r r f f f f f f f f".split(" ");
-            MoveDirection[] directions = OptionsParser.parse(args);
 
-            GrassField map = new GrassField(5);
+            EvolutionMap map = new EvolutionMap();
             //    IWorldMap map = new RectangularMap(10, 5);
-            Animal a = new Animal(map);
-            Animal b = new Animal(map, new Vector2d(3, 4));
-            map.place(a);
-            map.place(b);
-            System.out.println(map);
-            map.run(directions);
-            System.out.println(map);
+            Animal a = new Animal(map, new Vector2d(3, 4));
+
+            Animal b = new Animal(map, new Vector2d(34, 24));
+            Animal c = new Animal(map, new Vector2d(2, 3));
+            Animal d = new Animal(map, new Vector2d(0, 0));
+            Animal e = new Animal(map, new Vector2d(53, 17));
+            Animal f = new Animal(map, new Vector2d(11, 5));
+            Animal g = new Animal(map, new Vector2d(13, 6));
+            Animal h = new Animal(map, new Vector2d(18, 17));
+            Animal j = new Animal(map, new Vector2d(13, 11));
+            for(int i=0; i<100000; i++){
+                map.run();
+                if(i%100==0)System.out.println(map);
+            }
+            System.out.println("koniec");
         }
         catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());

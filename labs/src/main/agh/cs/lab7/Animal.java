@@ -51,16 +51,18 @@ public class Animal implements IMapElement {
             case FORWARD: {
                 Vector2d newPosition = this.position.add(this.direction.toUnitVector());
                 if(map.canMoveTo(newPosition)){
-                    this.positionChanged(this.position, newPosition);
+                    Vector2d tmpOldPosition = new Vector2d(this.position.x, this.position.y);
                     this.position = newPosition;
+                    positionChanged(tmpOldPosition, newPosition);
                 };
                 break;
             }
             case BACKWARD: {
                 Vector2d newPosition = this.position.subtract(this.direction.toUnitVector());
                 if(map.canMoveTo(newPosition)){
-                    positionChanged(this.position, newPosition);
+                    Vector2d tmpOldPosition = new Vector2d(this.position.x, this.position.y);
                     this.position = newPosition;
+                    positionChanged(tmpOldPosition, newPosition);
                 };
                 break;
             }
@@ -69,15 +71,15 @@ public class Animal implements IMapElement {
         }
     }
 
-    void addObserver(IPositionChangeObserver observer){
+    public void addObserver(IPositionChangeObserver observer){
         this.observers.add(observer);
     }
 
-    void removeObserver(IPositionChangeObserver observer){
+    public void removeObserver(IPositionChangeObserver observer){
         this.observers.remove(observer);
     }
 
-    void positionChanged(Vector2d oldPosition, Vector2d newPosition){
+    private void positionChanged(Vector2d oldPosition, Vector2d newPosition){
         for(IPositionChangeObserver o : observers){
            o.positionChanged(oldPosition, newPosition);
         }

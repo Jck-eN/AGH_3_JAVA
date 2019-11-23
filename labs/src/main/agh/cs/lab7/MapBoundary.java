@@ -30,9 +30,14 @@ public class MapBoundary implements IPositionChangeObserver {
         elements_y.add(newPosition);
     }
 
+    public void removeElement(Vector2d element){
+        elements_x.remove(element);
+        elements_y.remove(element);
+    }
+
     private void validate(){
         if(elements_x.isEmpty() || elements_y.isEmpty()){
-            throw new IllegalStateException("Mapboundary doesn't contain any points");
+            throw new IllegalStateException("MapBoundary nie zawiera żadnych punktów");
         }
     }
 

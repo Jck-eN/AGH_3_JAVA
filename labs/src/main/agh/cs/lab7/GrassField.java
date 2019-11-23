@@ -70,6 +70,7 @@ public class GrassField extends AbstractWorldMap {
                 this.addGrass(this.grasses.size());
                 this.grasses.remove(g);
                 this.grassesMap.remove(g.getPosition());
+                this.mapBoundary.removeElement(g.getPosition());
             }
         }
     }

@@ -35,14 +35,15 @@ public class MapBoundaryTest {
     }
 
     @Test
-    public void getTopRight() {
+    public void getTopRightTest() {
         assertEquals(this.map.mapBoundary.getTopRight(), new Vector2d(20,11));
         assertEquals(this.map2.mapBoundary.getTopRight(), new Vector2d(3,7));
     }
 
     @Test
-    public void getBottomLeft() {
+    public void getBottomLeftTest() {
         assertEquals(this.map.mapBoundary.getBottomLeft(), new Vector2d(0,4));
         assertEquals(this.map2.mapBoundary.getBottomLeft(), new Vector2d(2,-1));
     }
+
 }
