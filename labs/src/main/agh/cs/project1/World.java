@@ -1,5 +1,7 @@
 package agh.cs.project1;
 
+import java.io.IOException;
+
 public class World {
     public static void main(String[] args) {
         try {
@@ -18,13 +20,19 @@ public class World {
             Animal j = new Animal(map, new Vector2d(13, 11));
             for(int i=0; i<100000; i++){
                 map.run();
-                if(i%100==0)System.out.println(map);
+                if(i%100==0){
+                    System.out.println(map);
+                    Thread.sleep(100);
+                }
             }
             System.out.println("koniec");
         }
         catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
             System.exit(1);
+        }
+        catch (InterruptedException ex2){
+            System.out.println(ex2.getMessage());
         }
 
 
